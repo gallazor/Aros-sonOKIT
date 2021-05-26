@@ -51,7 +51,7 @@ include_once("boostrap.html");
 <footer class="footer mt-auto py-1 navbar-light border-bottom fixed-bottom" style="background-color:#F3C13A;">
   <div class="container">
     <div class="py-3 text-center">
-  &copy; 1993-
+  &copy; 1993 -
   <script>
     document.write(new Date().getFullYear())
   </script> | Aros & Søn ApS <a
