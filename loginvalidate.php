@@ -1,1 +1,7 @@
-<h2>Hello Admin</h2>
+<?php
+
+$title = "Forside";
+require("header.php");
+
+
+?>
