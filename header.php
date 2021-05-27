@@ -3,8 +3,7 @@
 $user = null;
 include_once("functions.php");
 
-$DBconnect = true;
-if($DBconnect == true) {
+
 
     define('DBHOST', 'localhost');
     define('DBPASS', 'root');
@@ -12,10 +11,18 @@ if($DBconnect == true) {
     define('DBNAME', 'arosdb2');
 
     connect();
+session_start();
 
+
+if(isset($_POST["logoutBtn"])){
+$_SESSION['user'] = "";
+header("Location: loginindex.php");
+exit();
 }
-
-include_once("boostrap.html");
+if($_SESSION['user'] == ""){
+  header("Location: loginindex.php");
+}
+include_once("bootstrap.html");
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +52,13 @@ include_once("boostrap.html");
               <a class="nav-link text-dark" href="#" >Beskeder</a>
           </li>
           <li class="nav-item">
+              <?php if($_SESSION['user'] == ""){?>
               <a class="nav-link text-dark" href="loginindex.php" >Login</a>
+            <?php } else {
+              echo '<form action="index.php" method="post">
+                  <button type="submit" name="logoutBtn">Log out</button>
+              </form>';
+            } ?>
           </li>
       </ul>
   </div>

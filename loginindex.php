@@ -1,4 +1,31 @@
 <!DOCTYPE html>
+<?php
+session_start();
+include('functions.php');
+define('DBHOST', 'localhost');
+define('DBUSER', 'root');
+define('DBPASS', 'root');
+define('DBNAME', 'arosdb2');
+connect();
+
+$loginMessage;
+
+if(isset($_POST['login'])){
+  if(count(getEmployees($_POST['client_user_id']))>0){
+    if($_POST['password'] == getEmployees($_POST['client_user_id'])[0]['pword']) {
+        $_SESSION['user'] = $_POST['client_user_id'];
+        header("Location: index.php");
+        exit();
+    } else {
+      $loginMessage = "The password entered is invalid";
+    }
+  } else {
+    $loginMessage = "Email does not exist";
+  }
+} else {
+  $loginMessage = "You are not logged in";
+}
+?>
 <html lang="en">
 
 <head>
@@ -12,14 +39,14 @@
 </head>
 
 <body>
-    <form action="loginvalidate.php" method="post">
+    <form action="loginindex.php" method="post">
         <div class="login-box">
             <h1>Login</h1>
 
             <div class="textbox">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                <input type="text" placeholder="Adminname"
-                         name="adminname" value="">
+                <input type="text" placeholder="E-mail"
+                         name="client_user_id" value="">
             </div>
 
             <div class="textbox">
@@ -27,7 +54,7 @@
                 <input type="password" placeholder="Password"
                          name="password" value="">
             </div>
-
+            <p><?php echo $loginMessage ?></p>
             <input class="button" type="submit"
                      name="login" value="Sign In">
         </div>

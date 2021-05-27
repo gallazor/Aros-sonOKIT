@@ -1,8 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    background: url() no-repeat;
+    font-family: Segoe UI;
+    background-color: #202020;
     background-size: cover;
 }
 
@@ -12,13 +12,13 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #191970;
+    color: #F3C13A;
 }
 
 .login-box h1 {
     float: left;
     font-size: 40px;
-    border-bottom: 4px solid #191970;
+    border-bottom: 4px solid #F3C13A;
     margin-bottom: 50px;
     padding: 13px;
 }
@@ -29,7 +29,7 @@ body {
     font-size: 20px;
     padding: 8px 0;
     margin: 8px 0;
-    border-bottom: 1px solid #191970;
+    border-bottom: 1px solid #F3C13A;
 }
 
 .fa {
@@ -45,13 +45,14 @@ body {
     font-size: 18px;
     float: left;
     margin: 0 10px;
+    color: white;
 }
 
 .button {
     width: 100%;
     padding: 8px;
-    color: #ffffff;
-    background: none #191970;
+    color: #202020;
+    background: none #F3C13A;
     border: none;
     border-radius: 6px;
     font-size: 18px;

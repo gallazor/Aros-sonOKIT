@@ -48,6 +48,18 @@ function getClient($var) {
     }
     return $client;
 }
+function getEmployees($var) {
+    global $conn;
+    $sql = "SELECT * FROM employees where email = '". $var. "'";
+    $result = mysqli_query($conn, $sql);
+    $employees = [];
+    if(mysqli_num_rows($result)>0){
+        while($row = mysqli_fetch_assoc($result)) {
+            $employees[] = $row;
+        }
+    }
+    return $employees;
+}
 //function getClientname($var, $var2) {
 //    global $conn;
 //    $sql = "SELECT * FROM users, contact where contact_id = '". $var. $var2. "'";
