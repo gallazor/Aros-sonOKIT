@@ -44,6 +44,9 @@ include_once("boostrap.html");
           <li class="nav-item">
               <a class="nav-link text-dark" href="#" >Beskeder</a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link text-dark" href="loginindex.php" >Login</a>
+          </li>
       </ul>
   </div>
 </nav>
