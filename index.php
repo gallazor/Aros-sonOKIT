@@ -6,10 +6,10 @@ require("header.php");
 
 ?>
 
-  <h1><?php echo $client = getClient($_GET['cid'])[0]['company_name']; ?></h1>
 
-  <div class="pt-5">
-      <table class="table  text-white table-hover table-striped text-center">
+  <div class="pt-5 mx-auto w-50 " >
+      <table class="table text-white text-center table-hover border border-white" >
+        <thead>
         <tr>
           <th>Firstname</th>
           <th>Lastname</th>
@@ -17,18 +17,3 @@ require("header.php");
         </tr>
         <?php customers_data() ?>
   </div>
-  <?php
-  if(isset($_GET['cid'])) {
-      $client = getClient($_GET['cid']);
-      echo "<h1 class='text-white' style='border:1px solid deeppink;'>" . $client[0]['email'] . "</h1>";
-  } else {
-    //jeg er empty
-
-  }
-   /*echo "<tr>
-          <td><a href='#'> ". $row['firstname'] ."</a></td>
-          <td>". $row['lastname'] ."</td>
-          <td>". $row['company_name'] ."</td>
-        </tr>";
-  }*/
-  ?>

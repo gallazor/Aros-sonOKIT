@@ -34,23 +34,23 @@ include_once("boostrap.html");
         <span class="navbar-toggler-icon"></span>
       </button>
     <div class="collapse navbar-collapse float-right" id="collapsibleNavbar">
-      <ul class="nav navbar-nav ml-auto">
+      <ul class="nav  navbar-nav ml-auto">
           <li class="nav-item">
-              <a class="nav-link" href="index.php" >Kundeliste</a>
+              <a class="nav-link text-dark" href="index.php" >Kundeliste</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="crm.php" >CRM</a>
+              <a class="nav-link text-dark" href="crm.php" >CRM</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#" >Beskeder</a>
+              <a class="nav-link text-dark" href="#" >Beskeder</a>
           </li>
       </ul>
   </div>
 </nav>
 
-<footer class="footer mt-auto py-1 navbar-light border-bottom fixed-bottom" style="background-color:#F3C13A;">
+<footer class="footer mt-auto navbar-light border-bottom fixed-bottom" style="background-color:#F3C13A;">
   <div class="container">
-    <div class="py-3 text-center">
+    <div class="py-2 text-center">
   &copy; 1993 -
   <script>
     document.write(new Date().getFullYear())

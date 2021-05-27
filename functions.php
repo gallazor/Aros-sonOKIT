@@ -23,9 +23,9 @@ function customers_data() {
     while($row = mysqli_fetch_assoc($result)) {
 
       echo "<tr>
-              <td><a href='kunde.php?cid=" . $row['contact_id'] . "'>". $row['firstname'] ."</a></td>
-              <td>". $row['lastname'] ."</td>
-              <td>". $row['company_name'] ."</td>
+              <td style='border: none;'>". $row['firstname'] ."</a></td>
+              <td style='border: none;'>". $row['lastname'] ."</td>
+              <td  class='btn col-sm-6 btn-warning text-danger btn-sm btn-block my-2 py-1 mx-auto font-weight-bold '><a class= text-dark href='kunde.php?cid=" . $row['contact_id'] . "'>". $row['company_name'] ."</td>
             </tr>";
     }
     echo "</table>";
@@ -48,7 +48,19 @@ function getClient($var) {
     }
     return $client;
 }
-
+//function getClientname($var, $var2) {
+//    global $conn;
+//    $sql = "SELECT * FROM users, contact where contact_id = '". $var. $var2. "'";
+//    $result = mysqli_query($conn, $sql);
+//    $client = [];
+//    if(mysqli_num_rows($result)>0){
+//        while($row = mysqli_fetch_assoc($result)) {
+//            $client[] = $row;
+//        }
+//    }
+//    return $client;
+//}
+//Henter user id når man vælger virksomhed
 function getUser($var) {
     global $conn;
     $sql = "SELECT * FROM users where userid = '". $var. "'";
