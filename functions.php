@@ -1,5 +1,14 @@
 <?php
-$conn;
+$conn = [];
+
+define('DBHOST', 'localhost');
+define('DBPASS', 'root');
+define('DBUSER', 'root');
+define('DBNAME', 'arosdb2');
+
+connect();
+
+
 
 function connect() { //connect to DB
     global $conn; //set var to global
@@ -48,6 +57,19 @@ function getClient($var) {
     }
     return $client;
 }
+function getNote($var) {
+    global $conn;
+    $sql = "SELECT * FROM newnote where contact_id = '". $var. "'";
+    $result = mysqli_query($conn, $sql);
+    $note = [];
+    if(mysqli_num_rows($result)>0){
+        while($row = mysqli_fetch_assoc($result)) {
+            $note[] = $row;
+        }
+    }
+    return $note;
+}
+
 function getEmployees($var) {
     global $conn;
     $sql = "SELECT * FROM employees where email = '". $var. "'";
@@ -60,19 +82,7 @@ function getEmployees($var) {
     }
     return $employees;
 }
-//function getClientname($var, $var2) {
-//    global $conn;
-//    $sql = "SELECT * FROM users, contact where contact_id = '". $var. $var2. "'";
-//    $result = mysqli_query($conn, $sql);
-//    $client = [];
-//    if(mysqli_num_rows($result)>0){
-//        while($row = mysqli_fetch_assoc($result)) {
-//            $client[] = $row;
-//        }
-//    }
-//    return $client;
-//}
-//Henter user id når man vælger virksomhed
+
 function getUser($var) {
     global $conn;
     $sql = "SELECT * FROM users where userid = '". $var. "'";
@@ -90,4 +100,49 @@ function debug($data) {
   echo '<pre>';
   print_r($data);
   echo '</pre>';
+}
+
+
+if(isset($_GET['delete'])){
+  global $conn;
+  $note_id = $_GET['delete'];
+  $delete = true;
+  $sql = "DELETE FROM `newnote` WHERE `note_id` = $note_id";
+  $result = mysqli_query($conn, $sql);
+}
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+  if(isset($_POST['note_idEdit'])){
+
+    $note_id = $_POST["note_idEdit"];
+    $title = $_POST["titleEdit"];
+    $discription = $_POST["discriptionEdit"];
+
+
+  $sql = "UPDATE `newnote` SET `title` = '$title' , `note` = '$discription' WHERE `newnote`.`note_id` = $note_id";
+  $result = mysqli_query($conn, $sql);
+  if($result){
+    $update = true;
+  }else{
+    echo "Der skete en fejl";
+  }
+
+  }
+  else{
+  $title = $_POST["title"];
+  $discription = $_POST["note"];
+
+
+$sql = "INSERT INTO `newnote` (`title`, `note`) VALUES ('$title', '$discription')";
+$result = mysqli_query($conn, $sql);
+
+
+
+if($result){
+
+    $insert = true;
+}
+else{
+    echo "Der skete en fejl";
+}
+  }
 }

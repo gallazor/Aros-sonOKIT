@@ -4,13 +4,6 @@ $user = null;
 include_once("functions.php");
 
 
-
-    define('DBHOST', 'localhost');
-    define('DBPASS', 'root');
-    define('DBUSER', 'root');
-    define('DBNAME', 'arosdb2');
-
-    connect();
 session_start();
 
 
@@ -36,27 +29,25 @@ include_once("bootstrap.html");
 </head>
 <body style="font-family: Segoe UI,Frutiger; background-color:#202020	;">
   <nav class="navbar navbar-expand-md navbar-light border-bottom mb-5" style="background-color:#F3C13A;">
-    <a class="navbar-brand" href="index.php">Aros & Søn ApS</a>
+    <a class="navbar-brand mb-2" href="index.php">Aros & Søn ApS</a>
       <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
     <div class="collapse navbar-collapse float-right" id="collapsibleNavbar">
-      <ul class="nav  navbar-nav ml-auto">
+      <ul class="nav  navbar-nav ml-auto my-auto">
           <li class="nav-item">
               <a class="nav-link text-dark" href="index.php" >Kundeliste</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="crm.php" >CRM</a>
+              <a class="nav-link text-dark" href="note.php" >Noter</a>
           </li>
-          <li class="nav-item">
-              <a class="nav-link text-dark" href="#" >Beskeder</a>
-          </li>
+
           <li class="nav-item">
               <?php if($_SESSION['user'] == ""){?>
               <a class="nav-link text-dark" href="loginindex.php" >Login</a>
             <?php } else {
               echo '<form action="index.php" method="post">
-                  <button type="submit" name="logoutBtn">Log out</button>
+                  <button class="btn my-1 col-sm-12 btn-dark text-white btn-sm btn-block " type="submit" name="logoutBtn">Log out</button>
               </form>';
             } ?>
           </li>
